@@ -1,0 +1,400 @@
+/**
+ * FTS 2015
+ * http://ftscreations.com
+ *
+ * Copyright (c) 2015 Josh Cross
+ * Licensed under the GPLv2+ license.
+ */
+
+ @font-face {
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/PFDinTextCompPro-Medium.ttf);
+  font-family: pfd-medium;
+}
+@font-face {
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/PT_Sans-Web-Regular.ttf);
+  font-family: ptsans-regular;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+@mixin setBg($url) {
+  .left-part {
+    background-image: url($url);
+  }
+  .bg-part {
+    background-image: url($url);
+  }
+}
+// change this, if you need more nav-items animated on sidebar hover
+$maxNavItems: 10;
+// affects sliding sidebar width and height of nav-items
+$realSidebarWidth: 30rem;
+html, body {
+  font-size: 62.5%; // makes 1 rem = 10px
+  overflow: hidden;
+}
+.main {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+.sidebar-hover,
+.sidebar-real,
+.left-part,
+.content,
+.bg-part{
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+/* END OF GLOBAL STYLES */
+
+/* SIDEBAR HOVER STYLES */
+.sidebar-hover {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  width: 15rem;
+  
+  &:after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(255,255,255,.5);
+  }
+  
+  &:hover ~ .sidebar-real {
+    max-width: $realSidebarWidth;
+  }
+  &:hover ~ .sidebar-real .nav-elem {
+    transform: translateX(0);
+    
+    @for $i from 1 through $maxNavItems {
+      &.nav-#{$i} {
+        transition-delay: 0.4s + ($i - 1) * 0.15s;
+      }
+    }
+  }
+  &:hover ~ .sections .content {
+    transform: translateX($realSidebarWidth);
+  }
+}
+
+.pagination {
+  z-index: 500;
+  position: absolute;
+  font-size: 1.6rem;
+  font-family: ptsans-regular;
+  top: 26.7rem;
+  left: 0rem;
+  width: 15rem;
+  text-align: center;
+  color: rgba(255,255,255, 0.5);
+  padding: 0.5rem;
+  background: rgba(0,0,0, 0.4);
+  
+  &:after {
+    content: ">";
+    color: #fff;
+    position: absolute;
+    display: block;
+    right: 3rem;
+    top: 0.5rem;
+    animation: navArrowMove 1s infinite;
+  }
+  
+  /*
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -0.5rem;
+    right: -0.2rem;
+    height: 4rem;
+    width: 0.5rem;
+    border-radius: 5px;
+    background: rgba(255,255,255, 0.9);
+  }*/
+  
+  .page {
+    color: #fff;
+  }
+}
+
+/* END OF SIDEBAR HOVER */
+
+/* REAL SIDEBAR (OFF-CANVAS MENU) STYLES */
+.sidebar-real {
+  z-index: 200;
+  left: 15rem;
+  width: $realSidebarWidth;
+  height: 500rem;
+  max-width: 0;
+  background: #000;
+  overflow: hidden;
+  transition: max-width 0.4s 0.2s, transform 0.3s;
+  will-change: max-width, transform;
+  
+  &:hover {
+    max-width: $realSidebarWidth;
+  }
+  &:hover .nav-elem {
+    transform: translateX(0);
+    
+    @for $i from 1 through $maxNavItems {
+      &.nav-#{$i} {
+        transition-delay: 0.4s + ($i - 1) * 0.15s;
+      }
+    }
+  }
+  &:hover ~ .sections .content {
+    transform: translateX($realSidebarWidth);
+  }
+}
+
+.nav-elem {
+  position: relative;
+  width: 100%;
+  height: $realSidebarWidth * 0.627;
+  background-size: cover;
+  transition: transform 0.4s 0.3s;
+  will-change: transform;
+  transform: translateX(-100%);
+  cursor: pointer;
+  
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    transition: background 0.2s;
+    will-change: background;
+  }
+  
+  &:hover:after {
+    background: rgba(0,0,0,0);
+  }
+  
+  &.nav-1 {
+    background-image: url(http://i.imgur.com/c07asTW.jpg);
+  }
+  &.nav-2 {
+    background-image: url(http://i.imgur.com/A9Ivcsj.jpg);
+  }
+  &.nav-3 {
+    background-image: url(http://i.imgur.com/PbV1Grl.jpg);
+  }
+  &.nav-4 {
+    background-image: url(http://i.imgur.com/Pg6nUAn.jpg);
+  }
+  &.nav-5 {
+    background-image: url(http://i.imgur.com/VWYl1EC.jpg);
+  }
+  &.nav-6 {
+    background-image: url(http://i.imgur.com/ga3BiDw.jpg);
+  }
+  &.nav-7 {
+    background-image: url(http://i.imgur.com/Mei5S7f.jpg);
+  }
+  &.nav-8 {
+    background-image: url(http://i.imgur.com/jAY4044.jpg);
+  }
+  
+}
+/* REAL SIDEBAR STYLES END */
+
+/* SECTIONS STYLES */
+
+.sections {
+  height: 100%;
+  transition: margin 0.5s;
+  will-change: margin;
+}
+
+.section {
+  position: relative;
+  height: 100%;
+  
+  &.section-1 {
+    @include setBg('http://i.imgur.com/c07asTW.jpg');
+  }
+  &.section-2 {
+    @include setBg('http://i.imgur.com/A9Ivcsj.jpg');
+  }
+  &.section-3 {
+    @include setBg('http://i.imgur.com/PbV1Grl.jpg'); 
+  }
+  &.section-4 {
+    @include setBg('http://i.imgur.com/Pg6nUAn.jpg');
+  }
+  &.section-5 {
+    @include setBg('http://i.imgur.com/VWYl1EC.jpg');
+  }
+  &.section-6 {
+    @include setBg('http://i.imgur.com/ga3BiDw.jpg');
+  }
+  &.section-7 {
+    @include setBg('http://i.imgur.com/Mei5S7f.jpg');
+  }
+  &.section-8 {
+    @include setBg('http://i.imgur.com/jAY4044.jpg');
+  }
+}
+
+.left-part,
+.bg-part {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-attachment: fixed;
+  // css transforms not working with background-attachment: fixed
+  transition: margin 0.8s;
+  will-change: margin;
+}
+
+.left-part {
+  z-index: 20;
+  left: 0;
+  width: 15rem;
+  transition-delay: 1s;
+}
+
+.content {
+  left: 15rem;
+  width: calc(100% - 15rem);
+  height: 100%;
+  transition: transform 0.4s 0.2s;
+  will-change: transform;
+}
+
+.section-heading,
+.additional-text {
+  display: block;
+  position: absolute;
+  z-index: 700;
+  color: #fff;
+  line-height: 1;
+  transition: transform 0.4s, opacity 0.1s, color 0.3s;
+  will-change: transform, opacity;
+  
+  &.not-visible {
+    transform: translateY(-10rem);
+    opacity: 0;
+    transition: transform 0.4s, opacity 0.2s 0.2s;
+  }
+}
+
+.section-heading {
+  top: 26.7rem;
+  left: 0;
+  font-size: 6rem;
+  text-transform: uppercase;
+  line-height: 1;
+  font-family: pfd-medium;
+  padding: 0 2rem 4rem;
+  background: rgba(0,0,0, 0.4);
+  cursor: pointer;
+  
+  &:hover {
+    color: rgba(255, 89, 89, 0.7);
+  }
+}
+
+.additional-text {
+  top: 33.2rem;
+  left: 2rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: ptsans-regular;
+}
+
+.bg-part {
+  width: 12.5%;
+  
+  &:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+  &:nth-child(3),
+  &:nth-child(5){
+    transition-delay: 0.6s;
+  }
+  &:nth-child(2),
+  &:nth-child(6) {
+    transition-delay: 0.8s;
+  }
+  &:nth-child(1),
+  &:nth-child(7) {
+    transition-delay: 1s;
+  }
+  &:nth-child(8) {
+    transition-delay: 1.2s;
+  }
+  
+  @for $i from 1 through 8 {
+    &:nth-child(#{$i}) {
+      left: ($i - 1) * 12.5%;
+    }
+  }
+}
+
+.scroll-down {
+  position: fixed;
+  z-index: 500;
+  transition: transform 0.5s 1.5s, opacity 0.3s 1.7s, z-index 0.5s 1.5s;
+  font-size: 3rem;
+  font-family: ptsans-regular;
+  text-transform: uppercase;
+  bottom: 8rem;
+  left: calc(50% - 15rem);
+  color: #fff;
+  width: 30rem;
+  text-align: center;
+  
+  &.removed {
+    transform: translateY(-20rem);
+    opacity: 0;
+    z-index: -10;
+    transition: transform 0.5s, opacity 0.3s 0.2s, z-index 0.5s;
+  }
+  
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: -3rem;
+    left: calc(50% - 1.5rem);
+    width: 3rem;
+    height: 3rem;
+    border: 0.5rem solid #fff;
+    border-left: none;
+    border-top: none;
+    transform-origin: 50% 50%;
+    transform: rotate(45deg);
+    animation: arrowMove 1.2s infinite;
+  }
+}
+
+@keyframes arrowMove {
+  to {
+    transform: rotate(45deg) translateY(2rem) translateX(2rem);
+    opacity: 0;
+  }
+}
+@keyframes navArrowMove {
+  to {
+    transform: translateX(2rem);
+    opacity: 0;
+  }
+}
