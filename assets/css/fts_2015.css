@@ -18,7 +18,15 @@
 
 html, body {
   font-size: 62.5%;
+  color: #FFF;
+  font-family: ptsans-regular;
   overflow: hidden; }
+
+blockquote {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-style: italic;
+}
 
 .main {
   width: 100%;
@@ -78,12 +86,21 @@ html, body {
   .sidebar-hover:hover ~ .sections .content {
     transform: translateX(30rem); }
 
+.social-icons {
+  position: absolute;
+  bottom: 1rem;
+  left: 0rem;
+  width: 15rem;
+  text-align: center;
+  z-index: 499;
+  font-size: 3rem;
+}
 .pagination {
   z-index: 500;
   position: absolute;
   font-size: 1.6rem;
   font-family: ptsans-regular;
-  top: 26.7rem;
+  top: 26rem;
   left: 0rem;
   width: 15rem;
   text-align: center;
@@ -109,6 +126,7 @@ html, body {
     display: block;
     right: 3rem;
     top: 0.5rem;
+    -webkit-animation: navArrowMove 1s infinite;
     animation: navArrowMove 1s infinite; }
   .pagination .page {
     color: #fff; }
@@ -125,6 +143,12 @@ html, body {
   overflow: hidden;
   transition: max-width 0.4s 0.2s, transform 0.3s;
   will-change: max-width, transform; }
+  .sidebar-real .section-heading {
+    font-size: 3rem;
+    color: #FFF;
+    text-align: center;
+    padding-top: 8rem;
+  }
   .sidebar-real:hover {
     max-width: 30rem; }
   .sidebar-real:hover .nav-elem {
@@ -257,7 +281,12 @@ html, body {
   will-change: transform; }
 
 .section-heading,
-.additional-text,
+.additional-text {
+  transition: transform 0.4s, opacity 0.1s, color 0.3s;
+  will-change: transform, opacity;
+}
+
+.heading-container,
 .page-content {
   display: block;
   position: absolute;
@@ -273,22 +302,22 @@ html, body {
     opacity: 0;
     transition: transform 0.4s, opacity 0.2s 0.2s; }
 
-.section-heading {
-  top: 26.7rem;
+.heading-container {
+  background: rgba(0,0,0,0.4);
+  top: 26rem;
   left: 0;
+  padding: 2rem;
+}
+
+.section-heading {
   font-size: 6rem;
   text-transform: uppercase;
   line-height: 1;
   font-family: pfd-medium;
-  padding: 0 2rem 4rem;
-  background: rgba(0, 0, 0, 0.4);
-  cursor: pointer; }
-  .section-heading:hover {
-    color: rgba(255, 89, 89, 0.7); }
+  text-align: center;
+}
 
 .additional-text {
-  top: 33.2rem;
-  left: 2rem;
   font-size: 2rem;
   text-transform: uppercase;
   font-family: ptsans-regular; }
@@ -353,7 +382,20 @@ html, body {
     transform-origin: 50% 50%;
     transform: rotate(45deg);
     animation: arrowMove 1.2s infinite; }
-
+footer {
+  min-height: 5rem;
+  min-width: 30rem;
+  background: rgba(0,0,0,0.4);
+  position: absolute;
+  bottom: 0;
+  left: 15rem;
+  font-size: 1.2rem;
+}
+  footer .contact {
+    width: 15rem;
+    height: 5rem;
+    background: url('../../images/social-tag.svg') 0 0 no-repeat;
+  }
 @keyframes arrowMove {
   to {
     transform: rotate(45deg) translateY(2rem) translateX(2rem);

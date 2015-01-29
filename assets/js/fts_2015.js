@@ -40,7 +40,7 @@
 	    }, time);
 	    setTimeout(function() {
 	      // cached selector not working because of newely created clone when moving up more then 2 positions
-	      $(".section-heading, .additional-text, .page-content").css({"margin-top": 0 - (parseInt($(".nav-elem.active").attr("data-page")) - 1) * 100 + "vh"}).hide();
+	      $(".heading-container, .page-content").css({"margin-top": 0 - (parseInt($(".nav-elem.active").attr("data-page")) - 1) * 100 + "vh"});
 	    }, 410);
 	    setTimeout(function() {
 	      $textStuff.show();

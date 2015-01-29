@@ -93,7 +93,7 @@ html, body {
   position: absolute;
   font-size: 1.6rem;
   font-family: ptsans-regular;
-  top: 26.7rem;
+  top: 26rem;
   left: 0rem;
   width: 15rem;
   text-align: center;
@@ -108,6 +108,7 @@ html, body {
     display: block;
     right: 3rem;
     top: 0.5rem;
+    -webkit-animation: navArrowMove 1s infinite;
     animation: navArrowMove 1s infinite;
   }
   
@@ -143,6 +144,10 @@ html, body {
   transition: max-width 0.4s 0.2s, transform 0.3s;
   will-change: max-width, transform;
   
+  .section-heading {
+    font-size: 2.4rem;
+  }
+
   &:hover {
     max-width: $realSidebarWidth;
   }
@@ -296,9 +301,14 @@ html, body {
   }
 }
 
-.section-heading {
-  top: 26.7rem;
+.heading-container {
+  background: rgba(0,0,0,0.4);
+  position: absolute;
+  top: 26rem;
   left: 0;
+}
+
+.section-heading {
   font-size: 6rem;
   text-transform: uppercase;
   line-height: 1;
@@ -382,7 +392,7 @@ html, body {
     border-top: none;
     transform-origin: 50% 50%;
     transform: rotate(45deg);
-    animation: arrowMove 1.2s infinite;
+    animation: arrowMove 1s infinite;
   }
 }
 
