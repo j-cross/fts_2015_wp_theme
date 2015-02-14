@@ -81,9 +81,9 @@ define( 'FTS_2015__VERSION', '0.1.0' );
   <em>Resolution should be at 1024x682</em>
 </p>
 <label class="screen-reader-text" for="fts_2015_background_image">Page Background</label>
-<div class="clearfix <?php echo $o['class']; ?>" data-preview_size="thumbnail" data-library="all" >
+<div class="clearfix fts-image-upload" data-preview_size="thumbnail" data-library="all" >
   <div class="has-image">
-    <img id="fts_2015-preview-image" src="<?php echo esc_url($fts_2015_background_image[0]); ?>" alt=""/>
+    <img id="fts_2015_preview_image" src="<?php echo esc_url($fts_2015_background_image[0]); ?>" alt=""/>
     <?php wp_nonce_field('fts_2015_nonce_check', 'fts_2015_nonce'); ?>
     <input type="hidden" id="fts_2015_background_image" name="fts_2015_background_image" value="<?php echo $fts_2015_bg_id; ?>" />
     <div class="hover">
