@@ -48,11 +48,15 @@ blockquote {
   width: 15rem;
   text-align: center;
   z-index: 499;
-  font-size: 3rem; }
+  font-size: 3rem;
+  background: rgba(0, 0, 0, 0.4);
+  height: 3.5rem; }
   .social-icons #facebook {
     fill: #3B5998; }
   .social-icons #twitter {
     fill: #4099FF; }
+  .social-icons #instagram {
+    fill: #EFEFEF; }
 
 a.svg-icon {
   text-decoration: none; }
@@ -375,16 +379,19 @@ a.svg-icon {
     left: calc(50% - 1.5rem);
     width: 3rem;
     height: 3rem;
-    border: 0.5rem solid #fff;
+    overflow: hidden;
     border-left: none;
     border-top: none;
+    border-right: 0.5rem solid #fff;
+    border-bottom: 0.5rem solid #fff;
     -webkit-transform-origin: 50% 50%;
     -ms-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+    transform: translateZ(1px) rotate(45deg);
     -webkit-animation: arrowMove 1.2s infinite;
+    -ms-animation: arrowMove 1.2s infinite;
     animation: arrowMove 1.2s infinite; }
 
 @keyframes arrowMove {
@@ -392,6 +399,10 @@ a.svg-icon {
     transform: rotate(45deg) translateY(2rem) translateX(2rem);
     opacity: 0; } }
 @-webkit-keyframes arrowMove {
+  to {
+    transform: rotate(45deg) translateY(2rem) translateX(2rem);
+    opacity: 0; } }
+@-ms-keyframes arrowMove {
   to {
     transform: rotate(45deg) translateY(2rem) translateX(2rem);
     opacity: 0; } }
@@ -403,6 +414,10 @@ a.svg-icon {
   to {
     transform: translateX(2rem);
     opacity: 0; } }
+@-ms-keyframes navArrowMove {
+  to {
+    transform: translateX(2rem);
+    opacity: 0; } }
 footer {
   background: rgba(0, 0, 0, 0.4);
   position: absolute;
@@ -410,7 +425,8 @@ footer {
   left: 15rem;
   font-size: 1.2rem;
   padding: 1rem 2rem;
-  color: #FFF; }
+  color: #FFF;
+  height: 3.5rem; }
   footer .contact {
     width: 15rem;
     height: 5rem; }
