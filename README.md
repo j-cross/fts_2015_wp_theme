@@ -20,7 +20,7 @@ To install this theme download the theme from Git, put it in a folder in the the
 ###Todo's
 - Make mobile friendly (currently only displays well in browser and tablet)
 - Implement more customization through the WP backend
-- 
+
 ###Development
 Want to contribute? Great!
 
