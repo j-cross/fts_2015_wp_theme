@@ -34,6 +34,12 @@ $realSidebarWidth: 30rem;
 html, body {
   font-size: 62.5%; // makes 1 rem = 10px
   overflow: hidden;
+  font-family: ptsans-regular;
+}
+blockquote {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-style: italic;
 }
 .main {
   width: 100%;
@@ -50,7 +56,24 @@ html, body {
   top: 0;
   height: 100%;
 }
-
+.social-icons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 15rem;
+  text-align: center;
+  z-index: 499;
+  font-size: 3rem;
+  #facebook {
+    fill: #3B5998
+  }
+  #twitter {
+    fill: #4099FF;
+  }
+}
+a.svg-icon {
+  text-decoration: none;
+}
 /* END OF GLOBAL STYLES */
 
 /* SIDEBAR HOVER STYLES */
@@ -84,6 +107,9 @@ html, body {
     }
   }
   &:hover ~ .sections .content {
+    transform: translateX($realSidebarWidth);
+  }
+  &:hover ~ footer {
     transform: translateX($realSidebarWidth);
   }
 }
@@ -145,7 +171,10 @@ html, body {
   will-change: max-width, transform;
   
   .section-heading {
-    font-size: 2.4rem;
+    font-size: 3rem;
+    color: #FFF;
+    text-align: center;
+    padding-top: 8rem;
   }
 
   &:hover {
@@ -284,8 +313,8 @@ html, body {
   will-change: transform;
 }
 
-.section-heading,
-.additional-text {
+.heading-container,
+.page-content {
   display: block;
   position: absolute;
   z-index: 700;
@@ -306,6 +335,7 @@ html, body {
   position: absolute;
   top: 26rem;
   left: 0;
+  padding: 2rem;
 }
 
 .section-heading {
@@ -313,18 +343,10 @@ html, body {
   text-transform: uppercase;
   line-height: 1;
   font-family: pfd-medium;
-  padding: 0 2rem 4rem;
-  background: rgba(0,0,0, 0.4);
-  cursor: pointer;
-  
-  &:hover {
-    color: rgba(255, 89, 89, 0.7);
-  }
+  text-align: center;
 }
 
 .additional-text {
-  top: 33.2rem;
-  left: 2rem;
   font-size: 2rem;
   text-transform: uppercase;
   font-family: ptsans-regular;
@@ -362,6 +384,7 @@ html, body {
 .scroll-down {
   position: fixed;
   z-index: 500;
+  -webkit-transition: -webkit-transform 0.5s 1.5s, opacity 0.3s 1.7s, z-index 0.5s 1.5s;
   transition: transform 0.5s 1.5s, opacity 0.3s 1.7s, z-index 0.5s 1.5s;
   font-size: 3rem;
   font-family: ptsans-regular;
@@ -390,13 +413,24 @@ html, body {
     border: 0.5rem solid #fff;
     border-left: none;
     border-top: none;
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-    animation: arrowMove 1s infinite;
+    -webkit-animation: arrowMove 1.2s infinite;
+    animation: arrowMove 1.2s infinite;
   }
 }
 
 @keyframes arrowMove {
+  to {
+    transform: rotate(45deg) translateY(2rem) translateX(2rem);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes arrowMove {
   to {
     transform: rotate(45deg) translateY(2rem) translateX(2rem);
     opacity: 0;
@@ -407,4 +441,35 @@ html, body {
     transform: translateX(2rem);
     opacity: 0;
   }
+}
+@-webkit-keyframes navArrowMove {
+  to {
+    transform: translateX(2rem);
+    opacity: 0;
+  }
+}
+footer {
+  background: rgba(0,0,0,0.4);
+  position: absolute;
+  bottom: 0;
+  left: 15rem;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  color: #FFF;
+
+  .contact {
+    width: 15rem;
+    height: 5rem;
+  }
+}
+/* CONTENT STYLES */
+.page-content {
+  top: 3rem;
+  right: 0;
+  width: 500px;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  background: rgba(0,0,0,0.4);
+  padding: 20px;
+  font-family: ptsans-regular;
 }

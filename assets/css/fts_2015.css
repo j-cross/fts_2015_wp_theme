@@ -18,15 +18,13 @@
 
 html, body {
   font-size: 62.5%;
-  color: #FFF;
-  font-family: ptsans-regular;
-  overflow: hidden; }
+  overflow: hidden;
+  font-family: ptsans-regular; }
 
 blockquote {
   padding-left: 20px;
   padding-right: 20px;
-  font-style: italic;
-}
+  font-style: italic; }
 
 .main {
   width: 100%;
@@ -42,6 +40,22 @@ blockquote {
   position: absolute;
   top: 0;
   height: 100%; }
+
+.social-icons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 15rem;
+  text-align: center;
+  z-index: 499;
+  font-size: 3rem; }
+  .social-icons #facebook {
+    fill: #3B5998; }
+  .social-icons #twitter {
+    fill: #4099FF; }
+
+a.svg-icon {
+  text-decoration: none; }
 
 /* END OF GLOBAL STYLES */
 /* SIDEBAR HOVER STYLES */
@@ -85,16 +99,9 @@ blockquote {
       transition-delay: 1.75s; }
   .sidebar-hover:hover ~ .sections .content {
     transform: translateX(30rem); }
+  .sidebar-hover:hover ~ footer {
+    transform: translateX(30rem); }
 
-.social-icons {
-  position: absolute;
-  bottom: 1rem;
-  left: 0rem;
-  width: 15rem;
-  text-align: center;
-  z-index: 499;
-  font-size: 3rem;
-}
 .pagination {
   z-index: 500;
   position: absolute;
@@ -147,8 +154,7 @@ blockquote {
     font-size: 3rem;
     color: #FFF;
     text-align: center;
-    padding-top: 8rem;
-  }
+    padding-top: 8rem; }
   .sidebar-real:hover {
     max-width: 30rem; }
   .sidebar-real:hover .nav-elem {
@@ -280,12 +286,6 @@ blockquote {
   transition: transform 0.4s 0.2s;
   will-change: transform; }
 
-.section-heading,
-.additional-text {
-  transition: transform 0.4s, opacity 0.1s, color 0.3s;
-  will-change: transform, opacity;
-}
-
 .heading-container,
 .page-content {
   display: block;
@@ -295,27 +295,25 @@ blockquote {
   line-height: 1;
   transition: transform 0.4s, opacity 0.1s, color 0.3s;
   will-change: transform, opacity; }
-  .section-heading.not-visible,
-  .additional-text.not-visible,
+  .heading-container.not-visible,
   .page-content.not-visible {
     transform: translateY(-10rem);
     opacity: 0;
     transition: transform 0.4s, opacity 0.2s 0.2s; }
 
 .heading-container {
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
   top: 26rem;
   left: 0;
-  padding: 2rem;
-}
+  padding: 2rem; }
 
 .section-heading {
   font-size: 6rem;
   text-transform: uppercase;
   line-height: 1;
   font-family: pfd-medium;
-  text-align: center;
-}
+  text-align: center; }
 
 .additional-text {
   font-size: 2rem;
@@ -354,6 +352,7 @@ blockquote {
 .scroll-down {
   position: fixed;
   z-index: 500;
+  -webkit-transition: -webkit-transform 0.5s 1.5s, opacity 0.3s 1.7s, z-index 0.5s 1.5s;
   transition: transform 0.5s 1.5s, opacity 0.3s 1.7s, z-index 0.5s 1.5s;
   font-size: 3rem;
   font-family: ptsans-regular;
@@ -379,23 +378,20 @@ blockquote {
     border: 0.5rem solid #fff;
     border-left: none;
     border-top: none;
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+    -webkit-animation: arrowMove 1.2s infinite;
     animation: arrowMove 1.2s infinite; }
-footer {
-  background: rgba(0,0,0,0.4);
-  position: absolute;
-  bottom: 0;
-  left: 15rem;
-  font-size: 1.2rem;
-  padding: 1rem 2rem;
-}
-  footer .contact {
-    width: 15rem;
-    height: 5rem;
-    background: url('../../images/social-tag.svg') 0 0 no-repeat;
-  }
+
 @keyframes arrowMove {
+  to {
+    transform: rotate(45deg) translateY(2rem) translateX(2rem);
+    opacity: 0; } }
+@-webkit-keyframes arrowMove {
   to {
     transform: rotate(45deg) translateY(2rem) translateX(2rem);
     opacity: 0; } }
@@ -403,6 +399,21 @@ footer {
   to {
     transform: translateX(2rem);
     opacity: 0; } }
+@-webkit-keyframes navArrowMove {
+  to {
+    transform: translateX(2rem);
+    opacity: 0; } }
+footer {
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 0;
+  left: 15rem;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  color: #FFF; }
+  footer .contact {
+    width: 15rem;
+    height: 5rem; }
 
 /* CONTENT STYLES */
 .page-content {
@@ -411,9 +422,8 @@ footer {
   width: 500px;
   font-size: 1.4rem;
   line-height: 1.8rem;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   padding: 20px;
-  font-family: ptsans-regular;
-}
-/* CONTENT STYLES END  */
+  font-family: ptsans-regular; }
+
 /*# sourceMappingURL=fts_2015.css.map */

@@ -1,16 +1,18 @@
-/*! FTS 2015 - v0.1.0 - 2015-01-09
+/*! FTS 2015 - v0.1.0 - 2015-02-27
  * http://ftscreations.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
-( function( $, window, document, undefined ) {
+( function( $, window, undefined ) {
 	'use strict';
-	$(document).ready(function(){
+	// Abandon all hope ye who enter here
+	$(document).ready(function() {
+	  
 	  var navigating = false,
 	      curPage = 1,
 	      pages = $(".section").length,
 	      $sections = $(".sections"),
 	      $paginationPage = $(".pagination .page"),
 	      $paginationTotal = $(".total-pages"),
-	      $textStuff = $(".section-heading, .additional-text, .page-content");
+	      $textStuff = $(".heading-container");
 	  
 	  if (pages >= 10) {
 	    $paginationTotal.text(pages);
@@ -40,7 +42,7 @@
 	    }, time);
 	    setTimeout(function() {
 	      // cached selector not working because of newely created clone when moving up more then 2 positions
-	      $(".heading-container, .page-content").css({"margin-top": 0 - (parseInt($(".nav-elem.active").attr("data-page")) - 1) * 100 + "vh"});
+	      $(".heading-container").css({"margin-top": 0 - (parseInt($(".nav-elem.active").attr("data-page")) - 1) * 100 + "vh"}).hide();
 	    }, 410);
 	    setTimeout(function() {
 	      $textStuff.show();
@@ -182,4 +184,4 @@
 	});
 
 
- } )( jQuery, this, document );
+ } )( jQuery, this );
