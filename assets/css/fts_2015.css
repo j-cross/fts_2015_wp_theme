@@ -383,13 +383,12 @@ blockquote {
     transform: rotate(45deg);
     animation: arrowMove 1.2s infinite; }
 footer {
-  min-height: 5rem;
-  min-width: 30rem;
   background: rgba(0,0,0,0.4);
   position: absolute;
   bottom: 0;
   left: 15rem;
   font-size: 1.2rem;
+  padding: 1rem 2rem;
 }
   footer .contact {
     width: 15rem;
